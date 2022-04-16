@@ -1,9 +1,8 @@
-name: 'build-and-publish' # name of the workflow
+name: "build-and-publish" # name of the workflow
 on:
   push:
     branches:
-			# this workflow is only triggered when there is a new push to the `master` branch.
-      - master
+      - master # this workflow is only triggered when there is a new push to the `master` branch.
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -13,8 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-				# the platform you want to build
-        platform: [macos-latest, ubuntu-latest, windows-latest]
+        platform: [macos-latest, ubuntu-latest, windows-latest] # the platform you want to build
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -34,7 +32,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: app-v__VERSION__
-          releaseName: 'app v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
+          releaseName: "app v__VERSION__"
+          releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
