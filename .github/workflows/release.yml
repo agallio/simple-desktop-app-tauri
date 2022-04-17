@@ -2,7 +2,7 @@ name: "build-and-publish" # name of the workflow
 on:
   push:
     branches:
-      - master # this workflow is only triggered when there is a new push to the `master` branch.
+      - main # this workflow is only triggered when there is a new push to the `master` branch.
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
